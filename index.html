@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RankArea Digital Agency</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0f0f1a;
+color:white;
+}
+
+/* HERO */
+header{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(135deg,#1e1e3f,#141427);
+position:relative;
+overflow:hidden;
+}
+
+/* ARROWS */
+.arrows{
+position:absolute;
+top:20%;
+display:flex;
+gap:20px;
+}
+
+.arrow{
+width:20px;
+height:60px;
+background:linear-gradient(#00c6ff,#ff00cc);
+animation:moveUp 2s infinite;
+border-radius:10px;
+}
+
+.arrow:nth-child(2){animation-delay:0.3s;}
+.arrow:nth-child(3){animation-delay:0.6s;}
+
+@keyframes moveUp{
+0%{transform:translateY(40px);opacity:0;}
+50%{opacity:1;}
+100%{transform:translateY(-40px);opacity:0;}
+}
+
+/* TITLE */
+header h1{
+font-size:48px;
+background:linear-gradient(90deg,#00c6ff,#ff00cc);
+-webkit-background-clip:text;
+color:transparent;
+margin-top:40px;
+}
+
+header p{
+margin-top:20px;
+font-size:18px;
+color:#ccc;
+}
+
+.btn{
+margin-top:30px;
+padding:12px 30px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,#00c6ff,#ff00cc);
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+section{
+padding:80px 10%;
+text-align:center;
+}
+
+.cards{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
+margin-top:40px;
+}
+
+.card{
+background:#1c1c2e;
+padding:30px;
+border-radius:20px;
+width:280px;
+transition:0.3s;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px rgba(0,198,255,0.5);
+}
+
+.price{
+font-size:32px;
+margin:15px 0;
+color:#00c6ff;
+}
+
+/* REVIEWS */
+.review-box{
+background:#141427;
+padding:15px;
+border-radius:10px;
+margin:10px auto;
+width:80%;
+}
+
+input, textarea, select{
+width:80%;
+padding:10px;
+margin:10px;
+border-radius:8px;
+border:none;
+}
+
+/* ABOUT WHITE SECTION */
+.about-section{
+background:white;
+color:#111;
+padding:80px 10%;
+text-align:center;
+}
+
+.about-section h2{
+color:#111;
+margin-bottom:20px;
+}
+
+.about-section p{
+color:#333;
+margin:8px 0;
+}
+
+/* FOOTER */
+footer{
+background:#0f0f1a;
+padding:20px;
+text-align:center;
+color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="arrows">
+<div class="arrow"></div>
+<div class="arrow"></div>
+<div class="arrow"></div>
+</div>
+
+<h1>RankArea Digital Agency</h1>
+<p>We Build Brands. We Rank Businesses. We Create Impact.</p>
+<button class="btn" onclick="scrollToPlans()">View Plans</button>
+</header>
+
+<section id="plans">
+<h2>Our Plans</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Basic</h3>
+<p class="price">₹1499</p>
+<p>1 Page Website</p>
+<p>Basic SEO Setup</p>
+<button class="btn" onclick="orderPlan('Basic')">Choose</button>
+</div>
+
+<div class="card">
+<h3>Pro</h3>
+<p class="price">₹1999</p>
+<p>3 Page Website</p>
+<p>SEO + Google Help</p>
+<button class="btn" onclick="orderPlan('Pro')">Choose</button>
+</div>
+
+<div class="card">
+<h3>Ultra Pro</h3>
+<p class="price">₹2999</p>
+<p>Premium Design</p>
+<p>SEO + Branding</p>
+<button class="btn" onclick="orderPlan('Ultra Pro')">Choose</button>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>Customer Reviews</h2>
+
+<div id="reviews"></div>
+
+<h3>Leave a Review</h3>
+<input type="text" id="name" placeholder="Your Name">
+<textarea id="message" placeholder="Write your review"></textarea>
+<select id="rating">
+<option value="★★★★★">★★★★★</option>
+<option value="★★★★">★★★★</option>
+<option value="★★★">★★★</option>
+<option value="★★">★★</option>
+<option value="★">★</option>
+</select>
+<button class="btn" onclick="addReview()">Submit</button>
+</section>
+
+<!-- WHITE ABOUT SECTION AT VERY BOTTOM -->
+<section class="about-section">
+<h2>About Us</h2>
+<p><b>RankArea Digital Agency</b> helps businesses grow online with modern websites, Google ranking support and branding solutions.</p>
+<p>📞 +918459848677</p>
+<p>📧 naimp7545@gmail.com</p>
+<p>📍 Dinwada, Maliwadgaon, Aurangabad, Maharashtra 431115</p>
+</section>
+
+<footer>
+© 2026 RankArea Digital Services
+</footer>
+
+<script>
+function orderPlan(plan){
+var phone="918459848677";
+var message="Hello, I want to purchase "+plan+" Plan.";
+window.location.href="https://wa.me/"+phone+"?text="+encodeURIComponent(message);
+}
+
+function scrollToPlans(){
+document.getElementById("plans").scrollIntoView();
+}
+
+let reviews=[];
+
+function addReview(){
+let name=document.getElementById("name").value;
+let message=document.getElementById("message").value;
+let rating=document.getElementById("rating").value;
+
+if(name && message){
+reviews.unshift({name,message,rating});
+displayReviews();
+document.getElementById("name").value="";
+document.getElementById("message").value="";
+}
+}
+
+function displayReviews(){
+let container=document.getElementById("reviews");
+container.innerHTML="";
+for(let i=0;i<reviews.length && i<5;i++){
+container.innerHTML+=
+`<div class="review-box"><b>${reviews[i].name}</b><br>${reviews[i].rating}<br>${reviews[i].message}</div>`;
+}
+}
+</script>
+
+</body>
+  </html>
